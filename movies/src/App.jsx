@@ -1,4 +1,6 @@
 import React from "react";
+import Navbar from "./Navbar";
+import Filter from "./Filter";
 
 class App extends React.Component {
   state = {
@@ -23,7 +25,15 @@ class App extends React.Component {
   }
 
   render = () => {
-    return <div></div>;
+    return (
+      <div>
+        <Navbar />
+
+        <div className="row">
+          <Filter genreData={this.state.genre} />
+        </div>
+      </div>
+    );
   };
 }
 
