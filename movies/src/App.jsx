@@ -1,27 +1,29 @@
 import React from "react";
-import Child from "./Child";
 
 class App extends React.Component {
   state = {
-    child: true,
+    movies: [],
+    genre: [],
   };
+
+  componentDidMount() {
+    let f = async () => {
+      let responseMovies = await fetch("/movies");
+      let responseGenre = await fetch("/genre");
+      let moviesJson = await responseMovies.json();
+      let genreJson = await responseGenre.json();
+
+      this.setState({
+        movies: moviesJson,
+        genre: genreJson,
+      });
+    };
+
+    f();
+  }
+
   render = () => {
-    return (
-      <div>
-        <button
-          onClick={() => {
-            if (this.state.child) {
-              this.setState({ child: false });
-            } else {
-              this.setState({ child: true });
-            }
-          }}
-        >
-          Child Toggle
-        </button>
-        {this.state.child ? <Child /> : ""}
-      </div>
-    );
+    return <div></div>;
   };
 }
 
