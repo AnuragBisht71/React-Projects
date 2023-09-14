@@ -31,6 +31,14 @@ class App extends React.Component {
     this.setState({ movies: currMoviesArr });
   };
 
+  deleteMovie = (id) => {
+    let filteredArr = this.state.movies.filter((el) => {
+      return el._id != id;
+    });
+
+    this.setState({ movies: filteredArr });
+  };
+
   componentDidMount() {
     let f = async () => {
       let responseMovies = await fetch("/movies");
@@ -62,6 +70,7 @@ class App extends React.Component {
           <div className="col-9">
             <Search />
             <Table
+              deleteMovie={this.deleteMovie}
               toggleLike={this.toggleLike}
               selectedFilter={this.state.selectedFilter}
               moviesData={this.state.movies}
