@@ -1,7 +1,7 @@
-let Search = () => {
+let Search = (props) => {
   return (
     <>
-      <p class="mt-4">Showing 9 movies from database</p>
+      <p class="mt-4">Showing {props.totalMovies} movies from database</p>
       <button type="button" class="btn btn-success">
         New
       </button>
@@ -13,8 +13,10 @@ let Search = () => {
               type="text"
               class="form-control"
               placeholder="Search..."
-              aria-label="Username"
-              aria-describedby="addon-wrapping"
+              value={props.search}
+              onChange={(e) => {
+                props.updateSearch(e.currentTarget.value);
+              }}
             />
           </div>
         </div>

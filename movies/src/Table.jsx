@@ -16,11 +16,18 @@ class Table extends React.Component {
     let currFilter = this.props.selectedFilter;
 
     let filteredMoviesArr = allMovies.filter((el) => {
-      if (currFilter == "All Genre") {
-        return el;
-      } else if (el.genre.name == currFilter) {
-        return el;
+      if (currFilter === "All Genre") {
+        return true;
+      } else if (el.genre.name === currFilter) {
+        return true;
       }
+    });
+
+    filteredMoviesArr = filteredMoviesArr.filter((el) => {
+      let movieTitle = el.title;
+      movieTitle = movieTitle.toLowerCase();
+      let searchText = this.props.search.toLowerCase();
+      return movieTitle.includes(searchText);
     });
 
     let numberOfPages = Math.ceil(filteredMoviesArr.length / 4);
