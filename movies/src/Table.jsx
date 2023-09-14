@@ -3,6 +3,14 @@ import Pagination from "./Pagination";
 import "./Table.css";
 
 class Table extends React.Component {
+  state = {
+    currPage: 1,
+  };
+
+  selectPage = (value) => {
+    this.setState({ currPage: value });
+  };
+
   render = () => {
     let allMovies = this.props.moviesData;
     let currFilter = this.props.selectedFilter;
@@ -15,7 +23,12 @@ class Table extends React.Component {
       }
     });
 
-    let arrToBeUsedInTable = filteredMoviesArr.slice(0, 4);
+    let numberOfPages = Math.ceil(filteredMoviesArr.length / 4);
+
+    let startIndex = (this.state.currPage - 1) * 4;
+    let endIndex = Math.min(filteredMoviesArr.length, this.state.currPage * 4);
+
+    let arrToBeUsedInTable = filteredMoviesArr.slice(startIndex, endIndex);
 
     return (
       <>
@@ -69,7 +82,11 @@ class Table extends React.Component {
           </div>
         </div>
 
-        <Pagination />
+        <Pagination
+          selectPage={this.selectPage}
+          currPage={this.state.currPage}
+          numberOfPages={numberOfPages}
+        />
       </>
     );
   };
