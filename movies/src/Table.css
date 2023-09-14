@@ -1,0 +1,11 @@
+.delete-btn {
+    border: none;
+    border-radius: 7px;
+    color: white;
+    background-color: #ff0000cf;
+    padding: 4px 8px;
+}
+
+.fa-solid {
+    color: #ff0000;
+}
