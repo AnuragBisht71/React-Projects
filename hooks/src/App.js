@@ -1,5 +1,5 @@
 let App = () => {
-  return <div></div>;
+  return <h1>Hooks</h1>;
 };
 
 export default App;
