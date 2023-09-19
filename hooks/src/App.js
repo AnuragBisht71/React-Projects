@@ -29,13 +29,25 @@ let App = () => {
 
   // Case 1: use effect function will execute after fisrt render and returns a function which is a clean up function
   //         it will be executed after every re-render
+  // useEffect(() => {
+  //   console.log("Case 2 use effect was called");
+
+  //   return () => {
+  //     console.log("Clean-up function was called");
+  //   };
+  // });
+
+  // Case 2: in this case use effect will only execute once and return a clean up function, but we dont have other use effect which will execute and we know clean up works before execution of use effect
+
+  // So in this case clean up function will execute when component is getting unmounted from the screen
+
   useEffect(() => {
     console.log("Case 2 use effect was called");
 
     return () => {
       console.log("Clean-up function was called");
     };
-  });
+  }, []);
 
   return (
     <div>
