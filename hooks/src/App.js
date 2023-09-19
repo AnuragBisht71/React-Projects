@@ -12,7 +12,7 @@ let App = () => {
     console.log("Case 1 use effect was called");
   }, []);
 
-  // Case 2: Passed a Function => use effect function will execute the passed function after every render, that is after first render and every re-render. So it works like COMPONENT DID MOUNT
+  // Case 2: Passed a Function and no Array => use effect function will execute the passed function after every render, that is after first render and every re-render.
   useEffect(() => {
     console.log("Case 2 use effect was called");
   });
