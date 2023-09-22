@@ -2,12 +2,6 @@ import { useEffect } from "react";
 import { signInWithGoogle, auth } from "../firebase";
 
 let Login = () => {
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.log(user);
-    });
-  }, []);
-
   return (
     <>
       <button

@@ -1,0 +1,35 @@
+import { createContext, useEffect, useState } from "react";
+import { auth } from "./firebase";
+
+let authContext = createContext();
+
+let AuthProvider = (props) => {
+  let [user, setUser] = useState(null);
+  let [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let unsub = auth.onAuthStateChange((user) => {
+      if (user) {
+        let { displayName, email, uid, profileURL } = user;
+        setUser({ displayName, email, uid, profileURL });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  return (
+    <>
+      <authContext.Provider value={user}>
+        {!loading && props.children}
+      </authContext.Provider>
+    </>
+  );
+};
+
+export default AuthProvider;
