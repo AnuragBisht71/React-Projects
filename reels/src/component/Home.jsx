@@ -9,6 +9,7 @@ let Home = () => {
   return (
     <>
       {user ? "" : <Navigate to="/login" />}
+      
       <h1>Home</h1>
 
       <button
