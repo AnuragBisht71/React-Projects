@@ -7,23 +7,31 @@ import { useEffect } from "react";
 
 let App = () => {
   useEffect(() => {
-    // ADD
-    // firestore.collection("users").add({ body: "this is some value" });
+  // ADD
+  // firestore.collection("users").add({ body: "this is some value" });
 
-    // GET COMPLETE COLLECTION DATA
-    async function f() {
-      let querySnapshot = await firestore.collection("users").get();
+  // GET COMPLETE COLLECTION DATA
+  // async function f() {
+  //   let querySnapshot = await firestore.collection("users").get();
 
-      for (let i = 0; i < querySnapshot.docs.length; i++) {
-        console.log(querySnapshot.docs[i].data());
-      }
+  //   for (let i = 0; i < querySnapshot.docs.length; i++) {
+  //     console.log(querySnapshot.docs[i].data());
+  //   }
+  // }
+  // f();
+
+  // GET SINGLE DOCUMENT OR OBJECT
+    let f = async () => {
+      let docRef = firestore.collection("users").doc("ZwapWu167qvN7ygUEbsS");
+      let documentSnapshot = await docRef.get();
+      console.log(documentSnapshot.data());
+      console.log(documentSnapshot.id);
     }
     f();
   }, []);
 
   return (
     <>
-      <h1 className="m-4">App</h1>
       {/* <AuthProvider>
         <Router>
           <Routes>
