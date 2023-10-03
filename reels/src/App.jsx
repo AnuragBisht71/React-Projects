@@ -6,7 +6,7 @@ import { firestore } from "./firebase";
 import { useEffect } from "react";
 
 let App = () => {
-  useEffect(() => {
+  // useEffect(() => {
   // ADD
   // firestore.collection("users").add({ body: "this is some value" });
 
@@ -21,25 +21,25 @@ let App = () => {
   // f();
 
   // GET SINGLE DOCUMENT OR OBJECT
-    let f = async () => {
-      let docRef = firestore.collection("users").doc("ZwapWu167qvN7ygUEbsS");
-      let documentSnapshot = await docRef.get();
-      console.log(documentSnapshot.data());
-      console.log(documentSnapshot.id);
-    }
-    f();
-  }, []);
+  //   let f = async () => {
+  //     let docRef = firestore.collection("users").doc("ZwapWu167qvN7ygUEbsS");
+  //     let documentSnapshot = await docRef.get();
+  //     console.log(documentSnapshot.data());
+  //     console.log(documentSnapshot.id);
+  //   }
+  //   f();
+  // }, []);
 
   return (
     <>
-      {/* <AuthProvider>
+      <AuthProvider>
         <Router>
           <Routes>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/" element={<Home />}></Route>
           </Routes>
         </Router>
-      </AuthProvider> */}
+      </AuthProvider>
     </>
   );
 };
