@@ -2,6 +2,8 @@ import { auth } from "../firebase";
 import { authContext } from "../AuthProvider";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import "./Home.css";
+import VideoCard from "./VideoCard";
 
 let Home = () => {
   let user = useContext(authContext);
@@ -10,10 +12,16 @@ let Home = () => {
     <>
       {user ? "" : <Navigate to="/login" />}
 
-      <h1>Home</h1>
+      <div className="video-container">
+        <VideoCard />
+        <VideoCard />
+        <VideoCard />
+        <VideoCard />
+        <VideoCard />
+      </div>
 
       <button
-        className="btn btn-danger"
+        className="home-logout-btn"
         onClick={() => {
           auth.signOut();
         }}

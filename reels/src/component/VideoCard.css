@@ -1,0 +1,48 @@
+.video-card {
+  height: 100%;
+  width: 30%;
+  margin: auto;
+  border: 1px solid white;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.video-card-element {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.video-card-user {
+  color: white;
+  font-weight: 600;
+  position: absolute;
+  bottom: 20%;
+  left: 15px;
+  font-size: 1.2rem;
+}
+
+.video-card-music {
+  position: absolute;
+  display: flex;
+  color: white;
+  bottom: 17%;
+  left: 8px;
+  font-size: 1.2rem;
+}
+
+.video-card-like {
+  font-size: 2rem;
+  color: red;
+  position: absolute;
+  bottom: 22%;
+  right: 10px;
+}
+
+.video-card-comment {
+  font-size: 2rem;
+  color: white;
+  position: absolute;
+  bottom: 15%;
+  right: 10px;
+}
