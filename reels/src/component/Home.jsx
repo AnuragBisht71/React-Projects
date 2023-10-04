@@ -14,10 +14,6 @@ let Home = () => {
 
       <div className="video-container">
         <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
       </div>
 
       <button
