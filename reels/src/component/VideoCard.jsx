@@ -9,10 +9,10 @@ let VideoCard = () => {
     <div className="video-card">
       <p className="video-card-user">Fake User</p>
       <span className="video-card-music">
-        <span class="material-icons-outlined">audiotrack</span>
+        <span className="material-icons-outlined">audiotrack</span>
         <marquee>Some song</marquee>
       </span>
-      <span class="material-icons-outlined video-card-like">
+      <span className="material-icons-outlined video-card-like">
         favorite_border
       </span>
       <span
@@ -23,7 +23,7 @@ let VideoCard = () => {
             setCommentBoxOpen(true);
           }
         }}
-        class="material-icons-outlined video-card-comment"
+        className="material-icons-outlined video-card-comment"
       >
         comment
       </span>
@@ -32,14 +32,20 @@ let VideoCard = () => {
         <div className="video-card-comment-box">
           <div className="comments">
             <div className="post-user-comment">
-              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+              <img
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                alt="user"
+              />
               <div>
                 <h6>Username</h6>
                 <p>This is an actual comment</p>
               </div>
             </div>
             <div className="post-user-comment">
-              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+              <img
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                alt="user"
+              />
               <div>
                 <h6>Username</h6>
                 <p>This is an actual comment</p>

@@ -28,6 +28,9 @@ let Home = () => {
 
       <input
         type="file"
+        onClick={(e) => {
+          e.currentTarget.value = null;
+        }}
         onChange={(e) => {
           let videoObj = e.currentTarget.files[0];
           let { name, size, type } = videoObj;
@@ -46,7 +49,15 @@ let Home = () => {
             return;
           }
 
-          storage.ref(`/post/${user.uid}/${Date.now() + name}`).put(videoObj);
+          let uploadTask = storage
+            .ref(`/post/${user.uid}/${Date.now() + "-" + name}`)
+            .put(videoObj);
+
+          uploadTask.on("stage_changed", null, null, () => {
+            uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+              console.log(url);
+            });
+          });
         }}
       />
     </>
