@@ -1,6 +1,6 @@
-import { auth, storage } from "../firebase";
+import { auth, storage, firestore } from "../firebase";
 import { authContext } from "../AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import "./Home.css";
 
@@ -8,13 +8,31 @@ import VideoCard from "./VideoCard";
 
 let Home = () => {
   let user = useContext(authContext);
+  let [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    firestore.collection("posts").onSnapshot((querySnapshot) => {
+      let docArr = querySnapshot.docs;
+      let arr = [];
+      for (let i = 0; i < docArr.length; i++) {
+        arr.push({
+          id: docArr[i].id,
+          ...docArr[i].data(),
+        });
+      }
+
+      setPosts(arr);
+    });
+  }, []);
 
   return (
     <>
       {user ? "" : <Navigate to="/login" />}
 
       <div className="video-container">
-        <VideoCard />
+        {posts.map((el) => {
+          return <VideoCard key={el.id} data={el} />;
+        })}
       </div>
 
       <button
@@ -56,6 +74,12 @@ let Home = () => {
           uploadTask.on("stage_changed", null, null, () => {
             uploadTask.snapshot.ref.getDownloadURL().then((url) => {
               console.log(url);
+              firestore.collection("posts").add({
+                name: user.displayName,
+                url,
+                likes: [],
+                comments: [],
+              });
             });
           });
         }}

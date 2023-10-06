@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./VideoCard.css";
 
-let VideoCard = () => {
+let VideoCard = (props) => {
   let [playing, setPlaying] = useState(false);
   let [commentBoxOpen, setCommentBoxOpen] = useState(false);
 
   return (
     <div className="video-card">
-      <p className="video-card-user">Fake User</p>
+      <p className="video-card-user">{props.data.name}</p>
       <span className="video-card-music">
         <span className="material-icons-outlined">audiotrack</span>
         <marquee>Some song</marquee>
@@ -72,7 +72,7 @@ let VideoCard = () => {
           }
         }}
         loop
-        src="https://media.vlipsy.com/vlips/Q9emQSKr/480p.mp4"
+        src={props.data.url}
         className="video-card-element"
       ></video>
     </div>
