@@ -2,16 +2,15 @@ import { auth, storage, firestore } from "../firebase";
 import { authContext } from "../AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import "./Home.css";
-
 import VideoCard from "./VideoCard";
+import "./Home.css";
 
 let Home = () => {
   let user = useContext(authContext);
   let [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    firestore.collection("posts").onSnapshot((querySnapshot) => {
+    let unsub = firestore.collection("posts").onSnapshot((querySnapshot) => {
       let docArr = querySnapshot.docs;
       let arr = [];
       for (let i = 0; i < docArr.length; i++) {
@@ -23,6 +22,10 @@ let Home = () => {
 
       setPosts(arr);
     });
+
+    return () => {
+      unsub();
+    };
   }, []);
 
   return (
