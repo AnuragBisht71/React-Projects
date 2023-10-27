@@ -1,8 +1,10 @@
 let App = () => {
   return (
-    <>
-      <h1>Home</h1>
-    </>
+    <div>
+      <button>+</button>
+      <p>0</p>
+      <button>-</button>
+    </div>
   );
 };
 
