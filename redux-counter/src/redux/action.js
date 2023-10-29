@@ -11,13 +11,13 @@ export const decrementCreator = () => {
   };
 };
 
-export const login = () => {
+export const loginCreator = () => {
   return {
     type: "LOGIN",
   };
 };
 
-export const logout = () => {
+export const logoutCreator = () => {
   return {
     type: "LOGOUT",
   };
