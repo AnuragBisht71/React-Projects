@@ -1,7 +1,7 @@
-let reducer = (state = 2, action) => {
+export const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case "INCREMENT":
-      return state + 1;
+      return state + action.payload;
 
     case "DECREMENT":
       return state - 1;
@@ -11,4 +11,15 @@ let reducer = (state = 2, action) => {
   }
 };
 
-export default reducer;
+export const loginReducer = (state = false, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return true;
+
+    case "LOGOUT":
+      return false;
+
+    default:
+      return state;
+  }
+};
