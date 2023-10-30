@@ -1,5 +1,9 @@
 let App = () => {
-  return <div></div>;
+  return (
+    <>
+      <h1>Home</h1>
+    </>
+  );
 };
 
 export default App;
